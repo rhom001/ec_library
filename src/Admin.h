@@ -3,6 +3,9 @@
 #ifndef ADMIN_H
 #define ADMIN_H
 
+#include "Format.h"
+#include "Date.h"
+
 #include <iostream>
 #include <string>
 #include <vector>
