@@ -144,4 +144,24 @@ class Role: public Admin
         void remove();
 };
 
+//  User - holds user information
+class User : public Admin
+{
+    private:
+        string username;
+        string password;
+        bool modObject;
+        bool modUser;
+    public:
+        User(string, string);
+        ~User();
+        //  Accessors
+        string getUsername();
+        string getPassword();
+        //  Mutators
+        void add();
+        void modify();
+        void remove();
+};
+
 #endif  //  ADMIN_H
