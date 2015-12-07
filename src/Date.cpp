@@ -4,6 +4,7 @@
 
 #include <iostream>
 #include <string>
+#include <sstream>
 
 using namespace std;
 
@@ -26,7 +27,7 @@ Date::Date(unsigned m, unsigned d, unsigned y)
     else if((day > 28) && (month == 2) && ((year % 4) > 0)) { day = 28; }
     else if(day < 1) { day = 0; }
     //  Checks if year is less than 2008
-    if(year > 2008) { year = 2008; {
+    if(year > 2008) { year = 2008; } 
     //  Checks if year is greater than current year + 1       
 }
 
@@ -36,13 +37,13 @@ Date::~Date()
 
 //  bool &operator <(const Date&) const- overloads the less than sign for the 
 //      Date object
-bool &Date::operator <(const Date &d) const
+bool Date::operator <(const Date &d) const
 {
-    if(this.month < d.getMonth())
+    if(month < (this->month))
     {
-        if(this.day < d.getDay())
+        if(day < (this->day))
         {
-            if(this.year < d.getYear())
+            if(year < (this->year))
             {
                 return true;
             }
@@ -74,6 +75,10 @@ unsigned Date::getYear()
 string Date::print(unsigned display= 0)
 {
     string date;
+    string m, d, y;
+    stringstream ss;
+    ss << month << ' ' << day << ' ' << year;
+    ss >> m >> d >> y;
     while(display > 3)      //  If display is not a choice, loop until correct
     {
         cout << "Error: incorrect date format" << endl;
@@ -81,19 +86,19 @@ string Date::print(unsigned display= 0)
     }
     if(display == 0)        //  Date: month/day/year
     {
-        date = zero(month) + month + "/" + zero(day) + day + "/" + year;
+        date = zero(month) + m+ "/" + zero(day) + d+ "/" + y;
     }
     else if(display == 1)   //  Date: month-day-year
     {
-        date = zero(month) + month + "-" + zero(day) + day + "-" + year;
+        date = zero(month) + m+ "-" + zero(day) + d+ "-" + y;
     }
     else if(display == 2)   //  Date: year/month/day
     {
-        date = year + "/" + zero(month) + month + "/" + zero(day) + day;
+        date = y+ "/" + zero(month) + m+ "/" + zero(day) + d;
     }
     else if (display == 3)  //  Date: year-month-day
     {
-        date = year + "-" + zero(month) + month + "-" + zero(day) + day;
+        date = y+ "-" + zero(month) + m+ "-" + zero(day) + d;
     }
     return date;
 }
@@ -159,16 +164,16 @@ bool Date::checkDay(unsigned d)
     //  Checks if day is greater than 0
     if(d < 0) { return false; }
     //  Checks for months 1, 3, 5, 7, 8, 10, 12
-    else if((day > 31) && (((this.month <= 7) && ((month % 2) == 1)) ||
-        ((this.month >= 8) && ((month % 2) == 0)))) { return false; }
+    else if((day > 31) && (((this->month <= 7) && ((month % 2) == 1)) ||
+        ((this->month >= 8) && ((month % 2) == 0)))) { return false; }
     //  Checks for months 4, 6, 9, 11
-    else if((day > 30) && (((this.month < 7) && ((month % 2) == 0)) ||
-        ((this.month > 8) && ((month % 2) == 1)))) { return false; }
+    else if((day > 30) && (((this->month < 7) && ((month % 2) == 0)) ||
+        ((this->month > 8) && ((month % 2) == 1)))) { return false; }
     //  Checks for month 2 and leap year
-    else if((day > 29) && ((this.month == 2) && ((this.year % 4) == 0)))
+    else if((day > 29) && ((this->month == 2) && ((this->year % 4) == 0)))
     { return false; }
     //  Checks for month 2 and not leap year
-    else if((day > 28) && ((this.month == 2) && ((this.year % 4) > 0)))
+    else if((day > 28) && ((this->month == 2) && ((this->year % 4) > 0)))
     { return false; }
     //  Otherwise day is correct
     return true;
