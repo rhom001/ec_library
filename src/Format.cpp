@@ -13,7 +13,7 @@ string zero(unsigned num)
 }
 
 //  unsigned prompt(string&, unsigned) - asks user to confirm if input is correct
-unsigned prompt(string input = "this", unsigned max = 3)
+unsigned prompt(string input = "this", unsigned max)
 {
     unsigned a = max;
     //  Makes sure that the input is correct (and that a is in range)
