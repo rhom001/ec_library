@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<albumList>
+    <album>
+        <title>Album Title</title>
+        <date>mm/dd/yyyy (album release date)</date>
+        <trackList>
+            <track>Track name</track>
+        </trackList>
+    </album>
+</albumList>

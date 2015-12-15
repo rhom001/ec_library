@@ -8,6 +8,8 @@
 #include <iostream>
 #include <string>
 
+using namespace std;
+
 class Date
 {
     private:
@@ -22,7 +24,7 @@ class Date
         unsigned getMonth();
         unsigned getDay();
         unsigned getYear();
-        string print(unsigned);
+        string print(unsigned display = 0);
         //  Mutators
         void setMonth(unsigned);
         void setDay(unsigned);

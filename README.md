@@ -13,6 +13,7 @@ derive <strong>Song</strong>, <strong>Album</strong>, <strong>Series</strong>,
         <li><a href="#song">Song class</a></li>
         <li><a href="#album">Album class</a></li>
         <li><a href="#series">Series class</a></li>
+        <li><a href="#role">Role class</a></li>
         <li><a href="#user">User class</a></li>
     </ul>
     <li><a href="#date">Date class</a></li>
