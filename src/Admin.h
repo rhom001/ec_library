@@ -156,11 +156,12 @@ class User : public Admin
         bool modObject;
         bool modUser;
     public:
-        User(string, string);
+        User(string&, string&);
         ~User();
         //  Accessors
         string getUsername();
         string getPassword();
+        bool checkPassword(string&);
         //  Mutators
         void add();
         void modify();
