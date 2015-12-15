@@ -24,6 +24,63 @@ class Admin
         virtual void print() = 0;
 };
 
+//  Role - holds character information
+class Role : public Admin
+{
+    private:
+        string role;
+        string vocal;
+    public:
+        Role(string&, string&);
+        ~Role();
+        //  Accessors
+        string getRole();
+        string getVocal();
+        void print();
+        //  Mutators
+        void add(string&, string&);
+        void modify();
+        void remove();
+};
+
+//  Series - holds series information
+class Series: public Admin
+{
+    private:
+        string title;
+        vector <string> seriesList;
+    public:
+        Series(string);
+        ~Series();
+        //  Accessors
+        string getTitle();
+        void print();
+        //  Mutators
+        void add();
+        void modify();
+        void remove();
+};
+
+//  Album - holds album information
+class Album: public Admin
+{
+    private:
+        string title;
+        Date* release;
+        vector<string> trackList;
+    public:
+        Album(string, Date*);
+        ~Album();
+        //  Accessors
+        string getTitle();
+        unsigned getTrack(string);
+        void print();
+        //  Mutators
+        void add();
+        void modify();
+        void remove();
+};
+
 //  Song - holds song information
 class Song: public Admin
 {
@@ -85,63 +142,6 @@ class Video: public Admin
         //  Acccesors
         void print();
 	//  Mutators
-        void add();
-        void modify();
-        void remove();
-};
-
-//  Album - holds album information
-class Album: public Admin
-{
-    private:
-        string title;
-        Date* release;
-        vector<string> trackList;
-    public:
-        Album(string, Date*);
-        ~Album();
-        //  Accessors
-        string getTitle();
-        unsigned getTrack(string);
-        void print();
-        //  Mutators
-        void add();
-        void modify();
-        void remove();
-};
-
-//  Series - holds series information
-class Series: public Admin
-{
-    private;
-        string title;
-        vector <string> seriesList;
-    public:
-        Series(string);
-        ~Series();
-        //  Accessors
-        string getTitle();
-        void print();
-        //  Mutators
-        void add();
-        void modify();
-        void remove();
-};
-
-//  Role - holds character information
-class Role: public Admin
-{
-    private:
-        string role;
-        string vocal;
-    public:
-        Role(string, string);
-        ~Role();
-        //  Accessors
-        string getRole();
-        string getVocal();
-        void print();
-        //  Mutators
         void add();
         void modify();
         void remove();
