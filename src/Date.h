@@ -6,6 +6,7 @@
 #define DATE_H
 
 #include <iostream>
+#include <string>
 
 class Date
 {
@@ -16,12 +17,12 @@ class Date
     public:
         Date(unsigned, unsigned, unsigned);
         ~Date();
-        bool &operator<(const Date&) const;
+        bool operator<(const Date&) const;
         //  Accessors
         unsigned getMonth();
         unsigned getDay();
         unsigned getYear();
-        void print(unsigned);
+        string print(unsigned);
         //  Mutators
         void setMonth(unsigned);
         void setDay(unsigned);
@@ -29,9 +30,9 @@ class Date
 
     private:
         //  Private helper functions
-        bool checkMonth();
-        bool checkDay();
-        bool checkYear();
+        bool checkMonth(unsigned);
+        bool checkDay(unsigned);
+        bool checkYear(unsigned);
 };
 
 #endif  //  DATE_H
