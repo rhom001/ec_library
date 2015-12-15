@@ -14,10 +14,9 @@
 class Admin
 {
     private:
-
     public:
-        Admin();
-        ~Admin();
+        //  Admin();
+        //  ~Admin();
         virtual void add() = 0;
         virtual void modify() = 0;
         virtual void remove() = 0;
@@ -31,6 +30,7 @@ class Role : public Admin
         string role;
         string vocal;
     public:
+        Role();
         Role(string&, string&);
         ~Role();
         //  Accessors
@@ -38,7 +38,9 @@ class Role : public Admin
         string getVocal();
         void print();
         //  Mutators
-        void add(string&, string&);
+        void setRole(string&);
+        void setVocal(string&);
+        void add();
         void modify();
         void remove();
 };
