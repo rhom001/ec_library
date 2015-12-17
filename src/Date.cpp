@@ -72,7 +72,7 @@ unsigned Date::getYear()
 
 //  string print(unsigned) - Prints out the date in a certain format determined 
 //      by the display unsigned integer
-string Date::print(unsigned display= 0)
+string Date::print(unsigned display)
 {
     string date;
     string m, d, y;
