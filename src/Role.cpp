@@ -60,14 +60,14 @@ void Role::add()
     cout << "Character: ";
     getline(cin, line);
     getline(cin, line);
-    check = prompt(line);
+    check = promptYN(line);
     cout << endl;
     while(check == 2)
     {
         getline(cin, line);
         cout << "Character: ";
         getline(cin, line);
-        check = prompt(line);
+        check = promptYN(line);
         cout << endl;
     }
     //  Sets the character role
@@ -82,7 +82,7 @@ void Role::add()
         getline(cin, line);
         cout << "Vocaloid: ";
         getline(cin, line);
-        check = prompt(line);
+        check = promptYN(line);
         cout << endl;
     }
     //  Sets the Vocaloid
@@ -106,7 +106,7 @@ void Role::modify()
             cout << "What would you like to change " << this->role 
                 << " to? ";
             getline(cin, line);
-            check = prompt(line);
+            check = promptYN(line);
         }
         this->setRole(line);
     }
@@ -117,7 +117,7 @@ void Role::modify()
             cout << "What Vocaloid would you like to change " 
                 << this->vocal << " to? ";
             getline(cin, line);
-            check = prompt(line);
+            check = promptYN(line);
         }
         this->setVocal(line);
     }

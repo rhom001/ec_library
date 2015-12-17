@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <string>
+#include <sstream>
 
 using namespace std;
 
@@ -13,7 +14,7 @@ string zero(unsigned num)
 }
 
 //  unsigned prompt(string&, unsigned) - asks user to confirm if input is correct
-unsigned prompt(string input = "this", unsigned max)
+unsigned prompt(string input, unsigned max)
 {
     unsigned a = max;
     //  Makes sure that the input is correct (and that a is in range)
@@ -46,4 +47,18 @@ unsigned promptNav(unsigned max)
         }
     }
     return a;
+}
+
+//  unsigned promptYN(char) - checks the user's yes/no response
+unsigned promptYN(string input)
+{
+    char ans;
+    cout << "Is " << input << " correct? ";
+    cin >> ans;
+    if((ans == 'y') || (ans == 'Y') || (ans == '1')) { return 1; }
+    else if((ans == 'n') || (ans == 'N') || (ans == '2')) { return 2; }
+    else if(ans == '0') { return 0; }
+    cout << "Error: please enter 'y', 'Y', 'n', 'N', or '0', '1', '2'."
+        << endl;
+    return promptYN();
 }
