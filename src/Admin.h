@@ -158,13 +158,19 @@ class User : public Admin
         bool modObject;
         bool modUser;
     public:
-        User(string&, string&);
+        User();
+        User(string&, string&, bool, bool);
         ~User();
         //  Accessors
         string getUsername();
         string getPassword();
+        unsigned getPrivy();
         bool checkPassword(string&);
         //  Mutators
+        void setUsername(string&);
+        void setPassword(string&);
+        void setPrivyObj(bool);
+        void setPrivyUse(bool);
         void add();
         void modify();
         void remove();
