@@ -40,14 +40,14 @@ void Role::print()
 //  void setRole(string&) - sets a new name as a character role
 void Role::setRole(string& name)
 {
-    if(name != this->role) { this->role = name; }
+    role = name; 
     return;
 }
 
 //  void setVocal(string&) - sets a new name as a Vocaloid [check a list?]
 void Role::setVocal(string& name)
 {
-    if(name != this->vocal) { this->role = vocal; }
+    vocal = name;
     return;
 }
 
@@ -57,11 +57,18 @@ void Role::add()
     string line;
     unsigned check = 2;
     //  Gets the character name
+    cout << "Character: ";
+    getline(cin, line);
+    getline(cin, line);
+    check = prompt(line);
+    cout << endl;
     while(check == 2)
     {
+        getline(cin, line);
         cout << "Character: ";
         getline(cin, line);
         check = prompt(line);
+        cout << endl;
     }
     //  Sets the character role
     if(check == 1)
@@ -72,9 +79,11 @@ void Role::add()
     //  Gets the Vocaloid    
     while(check == 2)
     {
+        getline(cin, line);
         cout << "Vocaloid: ";
         getline(cin, line);
         check = prompt(line);
+        cout << endl;
     }
     //  Sets the Vocaloid
     if(check == 1) { this->setVocal(line); }
