@@ -8,6 +8,9 @@ ADMIN = bin/Role.o
 all: src/main.cpp $(OBJS)
 	$(COMPILE) $(FLAGS) -o bin/ec_library src/main.cpp $(OBJS)
 
+test: src/test.cpp $(OBJS)
+	$(COMPILE) $(FLAGS) -o bin/test src/test.cpp $(OBJS)
+
 bin/Format.o: src/Format.cpp src/Format.h
 	$(COMPILE) $(FLAGS) -c src/Format.cpp -o bin/Format.o
 
