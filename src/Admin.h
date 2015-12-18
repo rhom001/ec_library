@@ -166,6 +166,7 @@ class User : public Admin
         string getPassword();
         unsigned getPrivy();
         bool checkPassword(string&);
+        void print();
         //  Mutators
         void setUsername(string&);
         void setPassword(string&);

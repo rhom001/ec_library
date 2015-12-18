@@ -57,6 +57,15 @@ bool User::checkPassword(string& attempt)
     return true;
 }
 
+//  void print() - prints out the username, password, and privileges
+void User::print()
+{
+    cout << "User: " << this->getUsername() << endl;
+    cout << "Password: " << this->getPassword() << endl;
+    cout << "Privy: " << this->getPrivy() << endl;
+    return;
+}
+
 //  Mutators
 //  void setUsername(string&) - sets new username for a User
 void User::setUsername(string& name)
@@ -91,11 +100,13 @@ void User::setPrivyUse(bool use)
 void User::add()
 {
     string name, pass;
+    unsigned ans;
     bool obj = false;
     bool use= false;
     cout << "When creating a new account, please note that usernames and "
-        << "passwords are case sensitive. Also do not put any spaces in "
-        << "either the username or password." 
+        << "passwords are case " << endl
+        << "sensitive. Also do not put any spaces in either the username "
+        << "or password." << endl << endl
         << "Creating new account..." << endl
         << "User: ";
     cin >> name;
@@ -109,6 +120,7 @@ void User::add()
     if(check == 1)
     {
         this->setUsername(name);
+        cout << endl;
         check = 2;
     }
     while(check == 2)
@@ -120,24 +132,33 @@ void User::add()
     if(check == 1) 
     { 
         this->setPassword(pass);
+        cout << endl;
         check = 2;
     }
-    if(check != 0)
+    while(check == 2)
     {
         cout << "Can " << name << " add and modify information? ";
+        cin >> ans;
         check = promptYN();
-        if(check == 1) { obj = true; }
     }
-    if(check != 0)
+    if(check == 1)
     {
+        if(ans == 1) { obj = true; }
         this->setPrivyObj(obj);
+        cout << endl;
+        check = 2;
+    }
+    while(check == 2)
+    {
         cout << "Can " << name << " add and delete other user accounts? ";
+        cin >> ans;
         check=promptYN();
     }
-    if(check != 0)
+    if(check == 1)
     {
-        if(check == 1) { use = true; }
+        if(ans == 1) { use = true; }
         this->setPrivyUse(use);
+        cout << endl;
     }
     return;
 }
@@ -158,7 +179,7 @@ void User::modify()
         bool attempt = checkPassword(pass) ;
         while(!attempt)
         {
-            cout << "Please enter your current password."
+            cout << "Please enter your current password." << endl
                 << "Current password: ";
             cin >> pass;
             attempt = checkPassword(pass);
