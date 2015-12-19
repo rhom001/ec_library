@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<songList>
+    <song>
+        <title>Song Title</title>
+        <subtitle>English Title (only for special cases)</subtitle>
+        <id>num</id>
+        <date>mm/dd/yyyy (earliest known release date)</date>
+        <canon>
+            <ec>Evillious Calendar</ec>
+        </canon>
+        <video>
+            <date>mm/dd/yyyy (video upload)</date>
+            <trackList>
+                <track>Illustrator</track>
+            </tracklist>
+        </video>
+    </song>
+</songList>

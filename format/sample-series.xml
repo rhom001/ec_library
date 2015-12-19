@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<seriesList>
+    <series>
+        <title>Series Name</title>
+        <trackList>
+            <track>Song name</track>
+        </trackList>
+    </series>
+</seriesList>
