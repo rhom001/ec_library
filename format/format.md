@@ -43,6 +43,75 @@ the name of the character as well as which song(s) they haave appeared in.
 <p>&lt;character&gt;
 <br />&nbsp;&nbsp;&lt;title&gt;Eve Zvezda&lt;/title&gt;
 <br />&nbsp;&nbsp;&lt;trackList&gt;
-<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;track&gt;Project 'Ma'&gt;
+<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;track&gt;Project 'Ma'&lt;/track&gt;
 <br />&nbsp;&nbsp;&lt;/trackList&gt;
 <br />&lt;/character&gt;</p>
+
+<p>To note, the character Eve Zvezda, while the same character as Eve
+Moonlit is still distinct. So there would be a separate file for that 
+character such that: </p>
+<p>&lt;character&gt;
+<br />&nbsp;&nbsp;&lt;title&gt;Eve Moonlit&lt;/title&gt;
+<br />&nbsp;&nbsp;&lt;trackList&gt;
+<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;track&gt;Moonlit Bear&lt;/track&gt;
+<br />&nbsp;&nbsp;&lt;/trackList&gt;
+<br />&lt;/character&gt;</p>
+
+<h3>What Makes a Character</h3>
+<p>Once again, to keep the loading efficient, we need a strict definition
+of what makes a character. In this case, it will be for vocal only. If not 
+sure, please check <a href=
+"http://theevilliouschronicles.wikia.com/wiki/Category:Characters"
+>the Evillious Chronicles wiki</a> for verification.</p>
+
+<h3>New Characters</h3>
+<p>Although a new character can be formed directly through a <strong>Role
+</strong> object, the object will most likely be built through a <strong>
+Song</strong> object.</p>
+
+<p>This is because when the add() function of the <strong>Song</strong>
+object is used, the user is asked for which vocalists/characters appear.
+<em>If the <strong>Role</strong> already exists, then the <strong>Role
+</strong> is just pushed back on to the <strong>Song</strong>.</em>
+Otherwise, a new <strong>Role</strong> object must be created.
+
+<p>In order for the new <strong>Role</strong> to be formed, the name of the
+character is put in by the user. Then the Vocaloid is checked to make sure 
+that that Vocaloid exists. This is to check for any potential errors and 
+repetivity as well as retain uniformity in <em>role.xml</em>. Finally the
+object is formed and added on to the <strong>Song</strong> object as well
+as the vector of <strong>Role</strong> pointers.</p>
+
+<h3>Updating Characters</h3>
+<p>If there is a need to change the name of a character in a <strong>Role
+</strong>, then this can be done through the modify() function of the 
+<strong>Role</strong> object.</p>
+
+<p>If there is a need for a name change for a Vocaloid, then this has to be
+done by finding all characters under the particular name of the previous 
+Vocaloid and then changing the name of the Vocaloid through the modify()
+function of the <strong>Role</strong> object.</p>
+
+<h2>Updating XML Files</h2>
+<p>Once the user is finished using the program upon exiting, then the
+<strong>Menu</strong> is terminated. Then the XML files will be updated 
+before the program finishes terminating. Each of the core files must be 
+updated in a prticular order so as not to break the informational objects.
+</p>
+
+<h3>Updating role.xml</h3>
+<p>One of the more time-consuming exit processes will be writing the 
+<em>role.xml</em> and the character files. Considering that the <strong>
+Menu</strong> object has already sorted the characters by which Vocaloid 
+they are played by, then each Vocaloid and their roles are pushed on to the 
+<strong>xmlCreator</xml> to make something similar to <em>sample-role.xml
+</em>.</p>
+
+<p>When a character role is pushed on to the <em>track</em> container of 
+<em>role.xml</em>, then the character name is converted into an xml file 
+name that is in turn used to create and generate a character xml file for 
+that particular character. In the character xml file, the name of the 
+character is used as the <em>title</em>. Then for each <strong>Song
+</strong> that the <strong>Role</strong> is found, the title of the 
+<strong>Song</strong> is pushed as a <em>track</em> in the character file.
+</p>
