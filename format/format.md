@@ -14,13 +14,15 @@ and will contain for each object a <em>title</em> and a list of contained
 inside a <em>trackList</em> that will consist of <em>track</em>s that can
 be used to hold detailed objects.</p>
 
-<p>As a result we will have for the core XML files:</p>
-<p>&lt;<em>object</em>List</em>&gt;</p>
-<p>&nbsp;&nbsp;&lt;<em>object</em>&gt;</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&lt;title&gt;Name&lt;/title&gt;</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&lt;header&gt;Another optional header&lt;header&gt;</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&lt;trackList&gt;</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;track&gt;Item Name&lt;track&gt;</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&lt;trackList&gt;</p>
-<p>&nbsp;&nbsp;&lt;<em>object</em></p>
-<p>&lt;/<em>object</em>List&gt;</p>
+<p>As a result we will have for the core XML files:
+<br />&lt;<em>object</em>List</em>&gt;
+<br />&nbsp;&nbsp;&lt;<em>object</em>&gt;
+<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;title&gt;Name&lt;/title&gt;
+<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;header&gt;Another optional header&lt;
+header&gt;
+<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;trackList&gt;
+<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;track&gt;Item Name&lt;
+track&gt;
+<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;trackList&gt;
+<br />&nbsp;&nbsp;&lt;<em>object</em>&gt;
+<br />&lt;/<em>object</em>List&gt;</p>
