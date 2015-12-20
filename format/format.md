@@ -104,7 +104,7 @@ updated in a prticular order so as not to break the informational objects.
 <em>role.xml</em> and the character files. Considering that the <strong>
 Menu</strong> object has already sorted the characters by which Vocaloid 
 they are played by, then each Vocaloid and their roles are pushed on to the 
-<strong>xmlCreator</xml> to make something similar to <em>sample-role.xml
+<strong>xmlCreator</strong> to make something similar to <em>sample-role.xml
 </em>.</p>
 
 <p>When a character role is pushed on to the <em>track</em> container of 
@@ -115,3 +115,45 @@ character is used as the <em>title</em>. Then for each <strong>Song
 </strong> that the <strong>Role</strong> is found, the title of the 
 <strong>Song</strong> is pushed as a <em>track</em> in the character file.
 </p>
+
+<h3>Updating series.xml and album.xml</h3>
+<p>For <em>series.xml</em>, the vector of <strong>Series</strong> pointers
+are simply read off from the <strong>Menu</strong> object. The name of the 
+series is then read in as the <em>title</em> while the songs in the series 
+are put in a <em>track</em> container.</p>
+
+<p>For the <em>album.xml</em>, the vector of <strong>Album</strong> 
+pointers is done in a similar process to the <strong>Series</strong>. 
+However, a second header is made for the release date of the <strong>
+Album</strong>.
+
+<h3>Updating song.xml</h3>
+<p>Unlike the previous core files, the <em>song.xml</em> file does not have
+a <em>trackList</em> container. Instead it is comprised of headers. While 
+there is definitely a <em>title</em> container for the <strong>Song
+</strong>. If the song in question has an alternative/English title, then 
+that is included in the <em>subtitle</em> container. Otherwise the <strong>
+Song</strong> object should have separate headers for its <em>id</em> and 
+release <em>date</em>.</p>
+
+<p>Since <strong>Song</strong> objects may have a <strong>Canon</strong> 
+and/or <strong>Video</strong> object, these are similarly optional items 
+like the <em>subtitle</em> container.</p>
+
+<p>If a <strong>Canon</strong> object exists, then the <em>canon</em>
+container is made. However, it is not necessary for anything to be inside 
+the container. That is unless there is a year that is not -1000.</p>
+
+<p>If a <strong>Video</strong> object exists, then the <em>video</em> 
+container is made. It is necessary to include a <em>date</em> container 
+for the upload date of the original PV as well as a <em>trackList</em> 
+container in which all of the video illustrators (or people involved in the
+video production) are included as <em>track</em> containers.</p>
+
+<h3>Updating user.xml</h3>
+<p>The <em>user.xml</em> consists of only header containers. These 
+containers are <em>title</em> (for the username), <em>pass</em> (password), 
+and <em>privy</em> (user privileges in binary). When updating for the <em>
+privy</em> if the user has a privilege, then that is printed as a '1' to 
+form a string. Otherwise, it is a '0' to show that the <strong>User
+</strong> does not have the privilege.</p>
