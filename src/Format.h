@@ -1,6 +1,5 @@
-#include <iostream>
-
-using namespace std;
+#ifndef _FORMAT_H_
+#define _FORMAT_H_
 
 //  string zero(unsigned) - Returns a leading zero for date
 string zero(unsigned);
@@ -14,3 +13,5 @@ unsigned promptNav(unsigned);
 
 //  unsigned promptYN(char) - checks for a user's yes/no answer
 unsigned promptYN(string input = "this");
+
+#endif
