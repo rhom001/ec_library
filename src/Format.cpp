@@ -6,6 +6,17 @@
 
 using namespace std;
 
+//  string tab(unsigned) - creates a tab of a certain amount of spaces
+string tab(unsigned num)
+{
+    string line;
+    for(unsigned i = 0; i < num; ++i)
+    {
+        line += ' ';
+    }
+    return line;
+}
+
 //  string zero(unsigned) - puts in a zero if a number is less than 10
 string zero(unsigned num)
 {
@@ -13,11 +24,29 @@ string zero(unsigned num)
     return "";
 }
 
-//  unsigned prompt(string&, unsigned) - asks user to confirm if input is correct
-unsigned prompt(string input, unsigned max)
+//  string subNum(unsigned) - puts a tabbed list number for a vector/list
+string subNum(unsigned num, unsigned tNum, unsigned lv)
+{
+    //  Adds one to the iterator
+    ++num;
+    stringstream ss;
+    ss << num;
+    
+    //  Creates the tabbed list number
+    string sub;
+    string line = tab(tNum * lv) + zero(num);
+    ss >> sub;
+    line += sub;
+    line += ") ";
+    return line;
+}
+
+//  unsigned prompt(string&, unsigned) - asks user to confirm if input is 
+//      correct
+unsigned prompt(unsigned max)
 {
     unsigned a;
-    cout << "Is " << input << " correct? ";
+    cout << "Option: ";
     cin >> a;
     cout << endl;
 
@@ -26,7 +55,7 @@ unsigned prompt(string input, unsigned max)
     {
         cout << "Error: incorrect input. Please enter a number at most "
             << max << "." << endl;
-        cout << "Is " << input << " correct? ";
+        cout << "Option:  ";
         cin >> a;
         cout << endl;
     }
@@ -39,6 +68,7 @@ unsigned promptNav(unsigned max)
     unsigned a;
     cout << "Where would you like to go? ";
     cin >> a;
+    cout << endl;
 
     while(a > max)
     {
