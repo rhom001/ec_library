@@ -110,7 +110,7 @@ void User::add()
         << "Creating new account..." << endl
         << "User: ";
     cin >> name;
-    unsigned check = prompt(name);
+    unsigned check = promptYN(name);
     while(check == 2)
     {
         cout << "User: ";
