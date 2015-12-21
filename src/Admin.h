@@ -50,14 +50,21 @@ class Series: public Admin
 {
     private:
         string title;
-        vector <string> seriesList;
+        vector <string> trackList;
     public:
-        Series(string);
+        Series();
+        Series(string&);
         ~Series();
         //  Accessors
         string getTitle();
+        string getTrack(unsigned);
         void print();
         //  Mutators
+        void setTitle(string&);
+        void addTrack(string&);
+        void setTrack(unsigned, string name="");
+        void removeTrack(unsigned);
+        void swapTrack(unsigned, unsigned);
         void add();
         void modify();
         void remove();
