@@ -27,6 +27,10 @@ bin/Role.o: src/Role.cpp src/Admin.h
 	mkdir -p ./bin
 	$(COMPILE) $(FLAGS) -c src/Role.cpp -o bin/Role.o
 
+bin/Series.o: src/Series.cpp src/Admin.h
+	mkdir -p ./bin
+	$(COMPILE) $(FLAGS) -c src/Series.cpp -o bin/Series.o
+
 clean:
 	rm -i bin/*
 	rmdir bin

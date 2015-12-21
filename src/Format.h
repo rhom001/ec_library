@@ -18,7 +18,8 @@ void login();
 
 // string zero(unsigned) - Returns a leading zero for date
 string zero(unsigned);		
-	
+string tab(unsigned);
+string subNum(unsigned num, unsigned tNum, unsigned lv);
 // unsigned prompt(string&, unsigned) - checks the user's choice against
 // the number of choices available.
 unsigned prompt(string input = "this", unsigned max = 3);

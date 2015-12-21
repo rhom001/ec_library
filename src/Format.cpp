@@ -1,6 +1,7 @@
 #include "Format.h"
 #include "Admin.h"
 #include <iostream>
+#include <sstream>
 #include <string>
 using std::string;
 using namespace std;
@@ -127,6 +128,18 @@ void login() //Login Menu
 	}
 }
 
+//  string tab(unsigned) - creates a tab of a certain amount of spaces
+string tab(unsigned num)
+{
+    string line;
+    for(unsigned i = 0; i < num; ++i)
+    {
+        line += ' ';
+    }
+    return line;
+}
+
+
 // string zero(unsigned) - puts in a zero if a number is less than 10
 string zero(unsigned num)
 {
@@ -137,6 +150,23 @@ string zero(unsigned num)
 		return temp; 
 	}
 	return temp;;
+}
+
+//  string subNum(unsigned) - puts a tabbed list number for a vector/list
+string subNum(unsigned num, unsigned tNum, unsigned lv)
+{
+    //  Adds one to the iterator
+    ++num;
+    stringstream ss;
+    ss << num;
+    
+    //  Creates the tabbed list number
+    string sub;
+    string line = tab(tNum * lv) + zero(num);
+    ss >> sub;
+    line += sub;
+    line += ") ";
+    return line;
 }
 
 
