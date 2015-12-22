@@ -8,17 +8,18 @@
 
 using namespace std;
 
-//  Date(unsigned, unsigned, unsigned) = default Date constructor
+//  Date(unsigned, unsigned, unsigned) - default Date constructor
 Date::Date(unsigned m, unsigned d, unsigned y)
 : month(m), day(d), year(y)
 {
     //  Checks if month is less than 1 or greater than 13
     if(month < 1) { month = 1; }
     else if(month > 12) { month = 12; }
-    //  Checks if day is less than 32 for months 1, 3, 5, 7, 8, 10, 12; checks 
-    //      if day is less than 31 for months 4, 6, 9, 11; checks if month 2 is
-    //      less than 30 days for leap year, else days is less than 29; checks 
-    //      if days are less than 1
+    //  Checks if day is less than 32 for months 1, 3, 5, 7, 8, 10, 12;
+    //  checks if day is less than 31 for months 4, 6, 9, 11; 
+    //  checks if month 2 is less than 30 days for leap year, 
+    //  else days is less than 29; 
+    //  checks if days are less than 1
     if((day > 31) && (((month <= 7) && ((month % 2) == 1)) || 
         ((month >= 8) && ((month % 2) == 0)))) { day = 31; }
     else if((day > 30) && (((month < 7) && ((month % 2) == 1)) ||
@@ -30,6 +31,11 @@ Date::Date(unsigned m, unsigned d, unsigned y)
     if(year > 2008) { year = 2008; } 
     //  Checks if year is greater than current year + 1       
 }
+
+//  Date(Date&) - Date object copy constructor
+Date::Date(Date& d)
+: month(d.getMonth()), day(d.getDay()), year(d.getYear())
+{}
 
 //  ~Date() - Date destructor
 Date::~Date()

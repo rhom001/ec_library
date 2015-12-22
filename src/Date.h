@@ -18,6 +18,7 @@ class Date
         unsigned year;
     public:
         Date(unsigned, unsigned, unsigned);
+        Date(Date&);
         ~Date();
         bool operator<(const Date&) const;
         //  Accessors
