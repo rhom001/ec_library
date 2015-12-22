@@ -2,7 +2,7 @@
 COMPILE = g++
 FLAGS = -Wall -Werror -ansi -pedantic -std=c++11
 OBJS = bin/Format.o bin/Date.o $(ADMIN)
-ADMIN = bin/User.o bin/Role.o bin/Series.o
+ADMIN = bin/User.o bin/Role.o bin/Series.o bin/Album.o
 
 #Targets
 all: src/main.cpp $(OBJS)
@@ -25,6 +25,9 @@ bin/Role.o: src/Role.cpp src/Admin.h
 
 bin/Series.o: src/Series.cpp src/Admin.h
 	$(COMPILE) $(FLAGS) -c src/Series.cpp -o bin/Series.o
+
+bin/Album.o: src/Album.cpp src/Admin.h
+	$(COMPILE) $(FLAGS) -c src/Album.cpp -o bin/Album.o
 
 clean:
 	rm -i bin/*
