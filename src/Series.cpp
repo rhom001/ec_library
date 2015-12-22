@@ -50,10 +50,14 @@ void Series::setTitle(string& name)
 }
 
 //  void addTrack() - adds a song to a Series
-//      there will be a check to make sure that the song exists in another
-//      object
 void Series::addTrack(string& name)
 {
+    //  Checks to make sure that Song doesn't already appear in Series
+    for(unsigned i = 0; i < this->trackList.size(); ++i)
+    {
+        if(this->getTrack(i) == name) { return;
+        }
+    }
     this->trackList.push_back(name);
     return;
 }

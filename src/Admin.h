@@ -78,13 +78,21 @@ class Album: public Admin
         Date* release;
         vector<string> trackList;
     public:
+        Album();
         Album(string, Date*);
         ~Album();
         //  Accessors
         string getTitle();
-        unsigned getTrack(string);
+        string getDate();
+        string getTrack(unsigned);
+        unsigned getTrackNum(string);
         void print();
         //  Mutators
+        void setTitle(string&);
+        void addTrack(string&);
+        void setTrack(unsigned, string name="");
+        void removeTrack(unsigned);
+        void swapTrack(unsigned, unsigned);
         void add();
         void modify();
         void remove();
