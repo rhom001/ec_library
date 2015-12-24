@@ -1,6 +1,4 @@
-/*  
-    Date header file
-*/
+/// Date header file
 
 #ifndef DATE_H
 #define DATE_H
@@ -18,6 +16,7 @@ class Date
         unsigned year;
     public:
         Date(unsigned, unsigned, unsigned);
+        Date(Date&);
         ~Date();
         bool operator<(const Date&) const;
         //  Accessors

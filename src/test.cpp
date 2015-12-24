@@ -27,7 +27,8 @@ int main()
     Date* birthday = new Date(month, day, year);
     cout << "Your birthday is " << birthday->print() << endl;
     cout << endl;
-
+    */
+    /*
     //  Tests the Role class
     cout << "Role class" << endl;
     string c = "Rin-chan";
@@ -50,8 +51,13 @@ int main()
     cout << "The role has been cleared!" << endl;
     r2->print();
     cout << endl;
+
+    cout << "Let us now modify the first role!" << endl;
+    r1->modify();
+    r1->print();
+    cout << endl;
     */
-    
+    /*
     //  Tests the User class
     cout << "User class" << endl;
     string username = "Guest";
@@ -78,5 +84,28 @@ int main()
     cout << "Let's change the first user" << endl;
     u1->modify();
     u1->print();
+    */
+    //  /*
+    //  Tests the Series class
+    cout << "Series class" << endl;
+    string name = "Seven Deadly Sins";
+    Series* s1 = new Series(name);
+    string song = "Madness of Duke Venomania";
+    s1->addTrack(song);
+    s1->print();
+
+    cout << "Now, let us add a new Series!" << endl;
+    Series* s2 = new Series();
+    s2->add();
+    s2->print();
+
+    cout << "Now we'll delete this second series..." << endl;
+    s2->remove();
+    s2->print();
+
+    cout << "Then we'll modify the first series..." << endl;
+    s1->modify();
+    s1->print();
+    //  */
     return 0;
 }

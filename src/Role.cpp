@@ -58,7 +58,7 @@ void Role::add()
     unsigned check = 2;
     //  Gets the character name
     cout << "Character: ";
-    getline(cin, line);
+    //  getline(cin, line);
     getline(cin, line);
     check = promptYN(line);
     cout << endl;
@@ -93,33 +93,42 @@ void Role::add()
 //  void modify() - asks if the user wants to change anything
 void Role::modify()
 {
-    cout << "Character Menu" << endl
-        << "1) Change character name" << endl
-        << "2) Change Vocaloid" << endl;
-    unsigned check = promptNav(3);
-    string line;
-    if(check == 1)
+    unsigned max = 2;
+    unsigned check = max;
+    //  Character modification menu
+    while(check != 0)
     {
-        check = 2;
-        while(check == 2)
+        cout << this->getRole() << " Menu" << endl
+            << "1) Change character name" << endl
+            << "2) Change Vocaloid" << endl;
+        check = promptNav(max);
+        string line;
+        if(check == 1)
         {
-            cout << "What would you like to change " << this->role 
-                << " to? ";
-            getline(cin, line);
-            check = promptYN(line);
+            check = 2;
+            while(check == 2)
+            {
+                getline(cin, line);
+                cout << "What would you like to change " 
+                    << this->getRole() << " to? ";
+                getline(cin, line);
+                check = promptYN(line);
+            }
+            if(check == 1) { this->setRole(line); }
         }
-        this->setRole(line);
-    }
-    if(check == 2)
-    {
-        while(check == 2)
+        if(check == 2)
         {
-            cout << "What Vocaloid would you like to change " 
-                << this->vocal << " to? ";
-            getline(cin, line);
-            check = promptYN(line);
+            while(check == 2)
+            {
+                getline(cin, line);
+                cout << "What Vocaloid would you like to change " 
+                    << this->getVocal() << " to? ";
+                getline(cin, line);
+                check = promptYN(line);
+            }
+            if(check == 1) { this->setVocal(line); }
         }
-        this->setVocal(line);
+        cout << endl;
     }
     return;
 }

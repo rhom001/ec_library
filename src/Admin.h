@@ -53,7 +53,7 @@ class Series: public Admin
         vector <string> trackList;
     public:
         Series();
-		Series(string&);
+        Series(string&);
         ~Series();
         //  Accessors
         string getTitle();
@@ -61,10 +61,10 @@ class Series: public Admin
         void print();
         //  Mutators
         void setTitle(string&);
-		void addTrack(string&);
-		void setTrack(unsigned, string name="");
-		void removeTrack(unsigned);
-		void swapTrack(unsigned, unsigned);
+        void addTrack(string&);
+        void setTrack(unsigned, string name="");
+        void removeTrack(unsigned);
+        void swapTrack(unsigned, unsigned);
         void add();
         void modify();
         void remove();
@@ -78,13 +78,23 @@ class Album: public Admin
         Date* release;
         vector<string> trackList;
     public:
+        Album();
         Album(string, Date*);
         ~Album();
         //  Accessors
         string getTitle();
-        unsigned getTrack(string);
+        string getDate();
+        string getTrack(unsigned);
+        unsigned getSize();
+        unsigned getTrackNum(string);
         void print();
         //  Mutators
+        void setTitle(string&);
+        void setDate();
+        void addTrack(string&);
+        void setTrack(unsigned, string name="");
+        void removeTrack(unsigned);
+        void swapTrack(unsigned, unsigned);
         void add();
         void modify();
         void remove();

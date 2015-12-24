@@ -1,38 +1,62 @@
-#include "Format.h"
 #include "Admin.h"
+#include "Date.h"
+#include "Format.h"
 
 #include <iostream>
 #include <string>
 
+using namespace std;
+
 //  Constructors and destructors
-//  Series() - empty constructor
-Series::Series()
+//  Album() - empty constructor
+Album::Album()
 {}
 
-//  Series(string&) - default constructor with title
-Series::Series(string& name)
-: title(name)
+//  Album(string&) - default constructor with title and date
+Album::Album(string name, Date* d)
+: title(name), release(d)
 {}
 
-//  ~Series() - destructor
-Series::~Series()
+//  ~Album() - destructor
+Album::~Album()
 {}
 
 //  Accessors
-//  string getTitle() - gets the title of a Series
-string Series::getTitle()
+//  string getTitle() - gets the title of a Album
+string Album::getTitle()
 { return this->title; }
 
-//  string getTrack(unsigned) - gets the title of a song in the Series
-string Series::getTrack(unsigned num)
+//  string getDate() - gets the release date of an Album
+string Album::getDate()
+{ return this->release->print(); } 
+
+//  string getTrack(unsigned) - gets the title of a song in the Album
+string Album::getTrack(unsigned num)
+{ return this->trackList.at(num); }
+
+//  unsigned getSize() - returns the size of the Album
+unsigned Album::getSize()
+{ return this->trackList.size(); }
+
+//  unsigned getTrackNum(string) - gets the track number of a song in the Album
+unsigned Album::getTrackNum(string name)
 {
-    return this->trackList.at(num);
+    unsigned pos;
+    for(pos = 0; pos < this->trackList.size(); ++pos)
+    {
+        if(this->trackList.at(pos).find(name) != string::npos)
+        {
+            return pos;
+        }
+    }
+    return this->getSize();
 }
 
-//  void print() - prints out the information for a Series
-void Series::print()
+//  void print() - prints out the information for a Album
+void Album::print()
 {
-    cout << this->getTitle() << endl;
+    cout << this->getTitle() << endl
+        << "Released: " << this->getDate() << endl;
     for(unsigned i = 0; i < this-> trackList.size(); ++i)
     {
        cout << subNum(i) << this->getTrack(i) << endl;
@@ -42,35 +66,50 @@ void Series::print()
 }
 
 //  Mutators
-//  void setTitle(string&) - sets the title of the Series
-void Series::setTitle(string& name)
+//  void setTitle(string&) - sets the title of the Album
+void Album::setTitle(string& name)
 {
     this->title = name;
     return;
 }
-
-//  void addTrack() - adds a song to a Series
-<<<<<<< HEAD
-//      there will be a check to make sure that the song exists in another
-//      object
-void Series::addTrack(string& name)
+//  void setDate() - sets the release Date of the Album
+void Album::setDate()
 {
-=======
-void Series::addTrack(string& name)
-{
-    //  Checks to make sure that Song doesn't already appear in Series
-    for(unsigned i = 0; i < this->trackList.size(); ++i)
+    unsigned check = 2;
+    Date* d = new Date(this->release->getMonth(), this->release->getDay(), 
+            this->release->getYear());
+    while(check == 2)
     {
-        if(this->getTrack(i) == name) { return;
+        cout << "Release Date" << endl;
+        d->setDate();
+        cout << endl;
+        check = promptYN(d->print());
+        //  If correct, then set the release Date to the new Date
+        if(check == 1)
+        {
+            this->release->setMonth(d->getMonth());
+            this->release->setDay(d->getDay());
+            this->release->setYear(d->getYear());
         }
     }
->>>>>>> cbe8d88cd78c1480b9a9087b75bf50a7b6f90e76
+    delete d;
+    return;
+}
+    
+//  void addTrack() - adds a song to a Album
+void Album::addTrack(string& name)
+{
+    //  Checks to make sure that Song doesn't already appear in Album
+    for(unsigned i = 0; i < this->trackList.size(); ++i)
+    {
+        if(this->getTrack(i) == name) { return; }
+    }
     this->trackList.push_back(name);
     return;
 }
 
-//  void setTrack(unsigned, string) - modifies a song title for a Series
-void Series::setTrack(unsigned num, string name)
+//  void setTrack(unsigned, string) - modifies a song title for a Album
+void Album::setTrack(unsigned num, string name)
 {
     unsigned check = 1;
     if(name.empty()) { check = 2; }
@@ -90,15 +129,15 @@ void Series::setTrack(unsigned num, string name)
     return;
 }
 
-//  void removeTrack(unsigned) - removes a song from a Series
-void Series::removeTrack(unsigned num)
+//  void removeTrack(unsigned) - removes a song from a Album
+void Album::removeTrack(unsigned num)
 {
     this->trackList.erase(trackList.begin()+num);
     return;
 }
 
-//  void swapTrack(unsigned, unsigned) - swaps two songs in a Series
-void Series::swapTrack(unsigned t1, unsigned t2)
+//  void swapTrack(unsigned, unsigned) - swaps two songs in a Album
+void Album::swapTrack(unsigned t1, unsigned t2)
 {
     string s1 = this->trackList.at(t1);
     //  string s2 = this->trackList.at(t2);
@@ -107,37 +146,48 @@ void Series::swapTrack(unsigned t1, unsigned t2)
     return;
 }
 
-//  void add() - adds to an empty Series object
-void Series::add()
+//  void add() - adds to an empty Album object
+void Album::add()
 {
     string line;
     unsigned num = this->trackList.size();
-    //  Gets the Series title
-    cout << "Series: ";
+    //  Gets the Album title
+    cout << "Album: ";
     getline(cin, line);
     unsigned check = promptYN(line);
     cout << endl;
     while(check == 2)
     {
         getline(cin, line);
-        cout << "Series: ";
+        cout << "Album: ";
         getline(cin, line);
         check = promptYN(line);
         cout << endl;
     }
-    //  Sets the Series title
+    //  Sets the Album title
     if(check == 1)
     {
         this->title = line;
         check = 2;
     }
-    //  Gets all of the songs in the Series
+    //  Sets the Album release date
+    while(check == 2)
+    {
+        this->release->setDate();
+        check = promptYN(this->release->print());
+    }
+    if(check == 1)
+    {
+        //  Release Date was already set in previous prompt
+        check = 2;
+    }
+    //  Gets all of the songs in the Album
     while(check == 2)
     {
         getline(cin, line);
         ++num;
         
-        //  Gets the song name for the Series
+        //  Gets the song name for the Album
         cout << "Song " << num << ": ";
         getline(cin, line);
         unsigned checkT = promptYN(line);
@@ -152,30 +202,31 @@ void Series::add()
         {
             this->addTrack(line);
         }
-        //  Checks if user is done adding songs to Series
+        //  Checks if user is done adding songs to Album
         check = promptYN("that all");
         cout << endl;
     }
     return;
 }
 
-//  void modify() - modifies a Series object
-void Series::modify()
+//  void modify() - modifies a Album object
+void Album::modify()
 {
-    unsigned max = 5;
+    unsigned max = 6;
     unsigned check = max;
     string line;
-    //  Series modification menu
+    //  Album modification menu
     while(check != 0)
     {
         cout << this->getTitle() << " Menu" << endl
-            << "1) Change series title" << endl //  Works
-            << "2) Add a song" << endl          //  Works
-            << "3) Change a song" << endl       //  Works
-            << "4) Remove a song" << endl       //  Works
-            << "5) Swap song order" << endl;    //  Works
+            << "1) Change album title" << endl  //  Works
+            << "2) Change release date" << endl //  
+            << "3) Add a song" << endl          //  Works
+            << "4) Change a song" << endl       //  Works
+            << "5) Remove a song" << endl       //  Works
+            << "6) Swap song order" << endl;    //  Works
         check = promptNav(max);
-        if(check == 1)      //  Changes the Series title
+        if(check == 1)      //  Changes the Album title
         {
             check = 2;
             while(check == 2)
@@ -188,8 +239,21 @@ void Series::modify()
             }
             if(check == 1) { this->setTitle(line); }
         }
-        else if(check == 2) //  Adds a song to the Series
+        else if(check == 2) //  Changes the Album release Date
         {
+            while(check == 2)
+            {
+                cout << "What would you like to change " << this->getDate()
+                    << " to? " << endl;
+                this->setDate();
+                check = promptYN(this->getDate());
+            }
+            //  if(check == 1) { date has already been set }
+        }
+
+        else if(check == 3) //  Adds a song to the Album
+        {
+            check = 2;
             while(check == 2)
             {
                 getline(cin, line);
@@ -200,7 +264,7 @@ void Series::modify()
             if(check == 1) { this->addTrack(line); }
         }
         //  Displays track list
-        else if((check == 3) || (check == 4) || (check == 5))
+        else if((check == 4) || (check == 5) || (check == 6))
         {
             unsigned choice = check;
             check = 2;
@@ -208,7 +272,7 @@ void Series::modify()
             unsigned modSwap = mod;
             while(check == 2)
             {
-                //   Shows all songs in the series
+                //   Shows all songs in the album
                 this->print();
                 mod = promptNav(this->trackList.size());
                 cout << endl;
@@ -263,11 +327,12 @@ void Series::modify()
     return;
 }
 
-//  void remove() - empties a Series object
-void Series::remove()
+//  void remove() - empties a Album object
+void Album::remove()
 {
     string blank = "";
     this->setTitle(blank);
+    //  Date cannot be cleared so will stay until changed otherwise
     this->trackList.clear();
     return;
 }
