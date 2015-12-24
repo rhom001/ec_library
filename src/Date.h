@@ -28,6 +28,7 @@ class Date
         void setMonth(unsigned);
         void setDay(unsigned);
         void setYear(unsigned);
+        void setDate();
 
     private:
         //  Private helper functions

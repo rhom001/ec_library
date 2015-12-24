@@ -152,6 +152,24 @@ void Date::setYear(unsigned y)
     return;
 }
 
+//  void setDate() - set the Date with user interaction
+void Date::setDate()
+{
+    unsigned m, d, y;
+    //  Sets the Date
+    cout << "Month: ";
+    cin >> m;
+    this->setMonth(m);
+    cout << "Day: ";
+    cin >> d;
+    this->setDay(d);
+    cout << "Year: ";
+    cin >> y;
+    this->setYear(y);
+    return;
+}
+
+
 //  Private helper functions
 //  bool checkMonth(unsigned) - Checks if month is less than 13 and greater than
 //  0
