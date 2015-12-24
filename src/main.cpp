@@ -6,6 +6,7 @@ using namespace std;
 
 int main()
 {
+    /*
 	string test;		//this portion is optional ... debug purpose  only
 	bool b_exit = false;
 	while(true)
@@ -19,5 +20,6 @@ int main()
 		cin >> test;	
 	}
 	ClearScreen();	//clean terminal screen
+    */
 	return 0;
 }

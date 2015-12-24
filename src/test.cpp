@@ -85,7 +85,7 @@ int main()
     u1->modify();
     u1->print();
     */
-    //  /*
+    /*
     //  Tests the Series class
     cout << "Series class" << endl;
     string name = "Seven Deadly Sins";
@@ -106,6 +106,11 @@ int main()
     cout << "Then we'll modify the first series..." << endl;
     s1->modify();
     s1->print();
+    */
+    //  /*
+    //  Tests the Album class
+    cout << "Album class" << endl;
+    
     //  */
     return 0;
 }
