@@ -10,7 +10,8 @@ using namespace std;
 //  Constructors and destructors
 //  Album() - empty constructor
 Album::Album()
-{}
+: title("")
+{ release = new Date(5, 17, 2009); }
 
 //  Album(string&) - default constructor with title and date
 Album::Album(string name, Date* d)
@@ -174,7 +175,8 @@ void Album::add()
     while(check == 2)
     {
         this->release->setDate();
-        check = promptYN(this->release->print());
+        check = promptYN();
+        cout << endl;
     }
     if(check == 1)
     {
@@ -220,7 +222,7 @@ void Album::modify()
     {
         cout << this->getTitle() << " Menu" << endl
             << "1) Change album title" << endl  //  Works
-            << "2) Change release date" << endl //  
+            << "2) Change release date" << endl //  Works
             << "3) Add a song" << endl          //  Works
             << "4) Change a song" << endl       //  Works
             << "5) Remove a song" << endl       //  Works
@@ -280,7 +282,7 @@ void Album::modify()
                 if(mod == 0) { return; }
                 --mod;
                 
-                if(choice == 3)     //  Allows user to modify a song
+                if(choice == 4)     //  Allows user to modify a song
                 {
                     unsigned tCheck = 2;
                     while(tCheck == 2)
@@ -289,15 +291,15 @@ void Album::modify()
                         cout << "What would you like to change \""
                             << this->getTrack(mod) << "\" to? " << endl;
                         getline(cin, line);
-                        tCheck = promptYN(line);
+                        tCheck = promptYN("\""+line+"\"");
                     }
                 }
-                else if(choice == 4) //  Allows user to delete song
+                else if(choice == 5) //  Allows user to delete song
                 {
                     cout << "You will delete \"" << this->getTrack(mod) 
                         << "\"." << endl;
                 }
-                else if(choice == 5)    //  Allows user to swap order
+                else if(choice == 6)    //  Allows user to swap order
                 {
                     cout << "What other song do you want to switch \""
                         << this->getTrack(mod) << "\" with? " << endl;
@@ -317,9 +319,9 @@ void Album::modify()
             }
             if(check == 1)
             {
-                if(choice == 3) { setTrack(mod, line); }
-                else if(choice == 4) { removeTrack(mod); }
-                else if(choice == 5) { swapTrack(mod, modSwap); }
+                if(choice == 4) { setTrack(mod, line); }
+                else if(choice == 5) { removeTrack(mod); }
+                else if(choice == 6) { swapTrack(mod, modSwap); }
             }
         }
         cout << endl;
