@@ -8,6 +8,11 @@
 
 using namespace std;
 
+//  Date() - empty Date constructor
+Date::Date()
+: month(2), day(28), year(2008)
+{}
+
 //  Date(unsigned, unsigned, unsigned) - default Date constructor
 Date::Date(unsigned m, unsigned d, unsigned y)
 : month(m), day(d), year(y)
@@ -28,7 +33,7 @@ Date::Date(unsigned m, unsigned d, unsigned y)
     else if((day > 28) && (month == 2) && ((year % 4) > 0)) { day = 28; }
     else if(day < 1) { day = 0; }
     //  Checks if year is less than 2008
-    if(year > 2008) { year = 2008; } 
+    if(year < 2008) { year = 2008; } 
     //  Checks if year is greater than current year + 1       
 }
 

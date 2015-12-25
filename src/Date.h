@@ -15,6 +15,7 @@ class Date
         unsigned day;
         unsigned year;
     public:
+        Date();
         Date(unsigned, unsigned, unsigned);
         Date(Date&);
         ~Date();
