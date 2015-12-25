@@ -110,7 +110,23 @@ int main()
     //  /*
     //  Tests the Album class
     cout << "Album class" << endl;
+    string name="Evils Theater";
+    Date* d1 = new Date(5, 17, 2009);
+    Album* a1 = new Album(name, d1);
+    a1->print();
     
+    cout << "Now, let us add a new Album!" << endl;
+    Album* a2 = new Album();
+    a2->add();
+    a2->print();
+
+    cout << "Now we'll delete the second album..." << endl;
+    a2->remove();
+    a2->print();
+    
+    cout << "Then we'll modify the first album..." << endl;
+    a1->modify();
+    a1->print();
     //  */
     return 0;
 }
