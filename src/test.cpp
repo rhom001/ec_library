@@ -107,7 +107,7 @@ int main()
     s1->modify();
     s1->print();
     */
-    //  /*
+    /*
     //  Tests the Album class
     cout << "Album class" << endl;
     string name="Evils Theater";
@@ -127,6 +127,6 @@ int main()
     cout << "Then we'll modify the first album..." << endl;
     a1->modify();
     a1->print();
-    //  */
+    */
     return 0;
 }
