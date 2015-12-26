@@ -46,7 +46,7 @@ class Role : public Admin
 };
 
 //  Series - holds series information
-class Series: public Admin
+class Series : public Admin
 {
     private:
         string title;
@@ -71,7 +71,7 @@ class Series: public Admin
 };
 
 //  Album - holds album information
-class Album: public Admin
+class Album : public Admin
 {
     private:
         string title;
@@ -101,17 +101,19 @@ class Album: public Admin
 };
 
 //  Song - holds song information
-class Song: public Admin
+class Song : public Admin
 {
     private:
         string title;           //  Song title
         string subtitle;        //  English title
         Date* release;          //  Release date
+        unsigned id;            //  Id number (possibly just vector index)
         vector<Role*> roles;    //  All vocalists
         vector<Album*> albums;  //  All albums
     public:
         // Constructors and destructors
-        Song(string, Date*);
+        Song();
+        Song(string, Date*, unsigned);
         ~Song();
         //  Accessors
         string getTitle();
@@ -128,7 +130,7 @@ class Song: public Admin
 };
 
 //  Canon - decorator for Song, holds canonical information
-class Canon: public Admin
+class Canon : public Admin
 {
     private:
         vector<Series*> series; //  Holds all series that the song is in
@@ -149,7 +151,7 @@ class Canon: public Admin
 };
 
 //  Video - decorator for Song, holds video information
-class Video: public Admin
+class Video : public Admin
 {
     private:
         Date* upload;
